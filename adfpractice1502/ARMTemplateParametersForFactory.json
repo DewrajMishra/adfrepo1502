@@ -5,8 +5,14 @@
 		"factoryName": {
 			"value": "adfpractice1502"
 		},
+		"LS_AdlsInputFiles_accountKey": {
+			"value": ""
+		},
 		"LS_BlobSA_connectionString": {
 			"value": ""
+		},
+		"LS_AdlsInputFiles_properties_typeProperties_url": {
+			"value": "https://saadlsgen1502.dfs.core.windows.net/"
 		}
 	}
 }

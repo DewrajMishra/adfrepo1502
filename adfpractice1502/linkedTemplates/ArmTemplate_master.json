@@ -7,9 +7,17 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adfpractice1502"
 		},
+		"LS_AdlsInputFiles_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_AdlsInputFiles'"
+		},
 		"LS_BlobSA_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_BlobSA'"
+		},
+		"LS_AdlsInputFiles_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://saadlsgen1502.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -38,8 +46,14 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"LS_AdlsInputFiles_accountKey": {
+						"value": "[parameters('LS_AdlsInputFiles_accountKey')]"
+					},
 					"LS_BlobSA_connectionString": {
 						"value": "[parameters('LS_BlobSA_connectionString')]"
+					},
+					"LS_AdlsInputFiles_properties_typeProperties_url": {
+						"value": "[parameters('LS_AdlsInputFiles_properties_typeProperties_url')]"
 					}
 				}
 			},
