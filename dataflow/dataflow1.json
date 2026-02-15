@@ -1,0 +1,55 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_adlsgen",
+						"type": "DatasetReference"
+					},
+					"name": "DetailsData"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_BlobSA",
+						"type": "DatasetReference"
+					},
+					"name": "SinkData"
+				}
+			],
+			"transformations": [
+				{
+					"name": "FilterRows"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          shipping_id as short,",
+				"          order_id as short,",
+				"          address as string,",
+				"          city as string,",
+				"          state as string,",
+				"          postal_code as integer,",
+				"          country as string,",
+				"          shipped_date as date,",
+				"          delivery_date as date,",
+				"          shipping_status as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     ignoreNoFilesFound: false) ~> DetailsData",
+				"DetailsData filter(country=='India' ",
+				") ~> FilterRows",
+				"FilterRows sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SinkData"
+			]
+		}
+	}
+}
